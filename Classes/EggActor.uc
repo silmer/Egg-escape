@@ -47,6 +47,6 @@ defaultproperties
     
     bWakeOnLevelStart=true
     
-    //bEnableStayUprightSpring = true
-    //StayUprightTorqueFactor = 1
+    // bEnableStayUprightSpring = true
+    // StayUprightTorqueFactor = 1
 }
