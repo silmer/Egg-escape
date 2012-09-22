@@ -2,10 +2,12 @@ class EggActor extends KActorSpawnable
 placeable;
 
 var vector MyVel;
+var vector InitialPos;
 
-function tick(float deltatime)
+event tick(float deltatime)
 { 
     local Vector L;
+
     StaticMeshComponent.SetRBLinearVelocity(MyVel*deltatime, true);
     
     L=StaticMeshComponent.GetPosition();
@@ -17,6 +19,7 @@ function tick(float deltatime)
     Owner.setrotation(rotator(StaticMeshcomponent.getposition() - L) );
     //Owner.setRotation(rotator(vect(-1,0,0)));
     
+
 }
 
 simulated event PostBeginPlay()
@@ -25,14 +28,14 @@ simulated event PostBeginPlay()
     super.PostBeginPlay();
     
     //Spawn constraint
-    TwoDConstraint.Spawn(class'RB_ConstraintActorSpawnable', self, '', Location, rot(0,0,0));
-    
+    TwoDConstraint = Spawn(class'RB_ConstraintActorSpawnable', self, '', Location, rot(0,0,0));
+
     //bLimited to 0 for Y and Z to allow movement
     TwoDConstraint.ConstraintSetUp.LinearYSetup.bLimited = 0;
     TwoDConstraint.ConstraintSetup.LinearZSetup.bLimited = 0;
     
     //Force the actor to not swing to X
-    TwoDConstraint.ConstraintSetup.bSwingLimited=true;
+    TwoDConstraint.ConstraintSetup.bSwingLimited = true;
     
     //Initialize constraint
     TwoDConstraint.InitConstraint(self, None);
