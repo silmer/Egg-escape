@@ -18,6 +18,8 @@ event tick(float deltatime)
     
     Owner.setrotation(rotator(StaticMeshcomponent.getposition() - L) );
     //Owner.setRotation(rotator(vect(-1,0,0)));
+	
+	//StaticMeshComponent.AddForce(vect(0,0,0));
     
 
 }
@@ -39,6 +41,8 @@ simulated event PostBeginPlay()
     
     //Initialize constraint
     TwoDConstraint.InitConstraint(self, None);
+	
+	
     
 }
 
